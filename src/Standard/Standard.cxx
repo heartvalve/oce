@@ -113,7 +113,7 @@ Standard_MMgrFactory::Standard_MMgrFactory()
     // CPU that supports SSE but does not support SSE2 (some modifications of
     // AMD Sempron).
     DWORD volatile dwFeature;
-    _asm
+    /*_asm
     {
       push eax
       push ebx
@@ -130,6 +130,7 @@ Standard_MMgrFactory::Standard_MMgrFactory()
       pop ebx
       pop eax
     }
+    */
     if ((dwFeature & _SSE2_FEATURE_BIT) == 0)
       anAllocId = 0;
   }
