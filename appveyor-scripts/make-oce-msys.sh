@@ -31,7 +31,8 @@ cmake -DBUNDLE_BUILD_FREEIMAGE:BOOL=ON \
       -DBUNDLE_SHARED_LIBRARIES:BOOL=ON \
       -DOCE_WIN_BUNDLE_INSTALL_DIR=c:\\oce-win-bundle \
       -G'MSYS Makefiles' ..
-make
+exec 0</dev/null;
+make -j2
 make install
 #
 # Then make oce
