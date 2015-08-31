@@ -2,6 +2,10 @@ version: 0.17.1-dev.{build}
 
 environment:
   matrix:
+    - generator: "MSYS Makefiles"
+      Arch: i686 # this is for 32-bit MinGW-w64
+    - generator: "MSYS Makefiles"
+      Arch : Win64
     - generator: "Visual Studio 12"
       Arch: Win32
     - generator: "Visual Studio 12 Win64"
@@ -12,10 +16,6 @@ environment:
       Arch : Win64
     - generator: "MSYS Makefiles"
       Arch : Win32
-    - generator: "MSYS Makefiles"
-      Arch: i686 # this is for 32-bit MinGW-w64
-    - generator: "MSYS Makefiles"
-      Arch : Win64
 
 configuration:
   #- Debug
