@@ -29,7 +29,7 @@ branches:
 
 # scripts that are called at very beginning, before repo cloning
 init:
-  #- set PATH=%PATH%;C:\MinGW\bin
+  - set PATH=%PATH%;C:\MinGW\bin
   #- g++ -v
   #- ps: |
   #    if ($env:generator -eq "MinGW Makefiles") {
@@ -49,11 +49,12 @@ before_build:
 # scripts that run after cloning repository
 install:
   - git clone -q --branch=master https://github.com/QbProg/oce-win-bundle.git C:\projects\oce-win-bundle
+
 build_script:
   #
   # First set MinGW to use
   #
-  - cmd : if "%generator%"" == "MSYS Makefiles" (C:\MinGW\msys\1.0\bin\sh --login /c/projects/oce/appveyor-scripts/set-mingw.sh)
+  - cmd: if "%generator%"" == "MSYS Makefiles" (C:\MinGW\msys\1.0\bin\sh --login /c/projects/oce/appveyor-scripts/set-mingw.sh)
   #
   # Build dependencies: freetype, freeimage etc. from the oce bundle ...
   #
