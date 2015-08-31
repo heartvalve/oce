@@ -17,10 +17,6 @@ environment:
     - generator: "MSYS Makefiles"
       ARCH : Win64
 
-platform:
-  - Win32
-  - Win64
-
 configuration:
   #- Debug
   - RelWithDebInfo
