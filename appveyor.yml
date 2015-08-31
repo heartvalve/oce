@@ -12,7 +12,7 @@ environment:
       ARCH : Win64
     - generator: "MSYS Makefiles"
       ARCH : Win32
-    - GENERATOR: "MSYS Makefiles"
+    - generator: "MSYS Makefiles"
       ARCH: i686 # this is for 32-bit MinGW-w64
     - generator: "MSYS Makefiles"
       ARCH : Win64
@@ -33,7 +33,6 @@ branches:
 
 # scripts that are called at very beginning, before repo cloning
 init:
-  - if %generator% == "MSYS Makefiles" (C:\MinGW\msys\1.0\bin\sh --login /c/projects/oce/appveyor-scripts/set-mingw.sh)
   #- set PATH=%PATH%;C:\MinGW\bin
   #- g++ -v
   #- ps: |
@@ -55,6 +54,10 @@ before_build:
 install:
   - git clone -q --branch=master https://github.com/QbProg/oce-win-bundle.git C:\projects\oce-win-bundle
 build_script:
+  #
+  # First set MinGW to use
+  #
+  - cmd : if %generator% == "MSYS Makefiles" (C:\MinGW\msys\1.0\bin\sh --login /c/projects/oce/appveyor-scripts/set-mingw.sh)
   #
   # Build dependencies: freetype, freeimage etc. from the oce bundle ...
   #
