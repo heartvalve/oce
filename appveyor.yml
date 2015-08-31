@@ -53,7 +53,7 @@ build_script:
   #
   # First set MinGW to use
   #
-  - cmd : if %generator% == "MSYS Makefiles" (C:\MinGW\msys\1.0\bin\sh --login /c/projects/oce/appveyor-scripts/set-mingw.sh)
+  - cmd : if "%generator%"" == "MSYS Makefiles" (C:\MinGW\msys\1.0\bin\sh --login /c/projects/oce/appveyor-scripts/set-mingw.sh)
   #
   # Build dependencies: freetype, freeimage etc. from the oce bundle ...
   #
