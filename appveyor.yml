@@ -3,19 +3,19 @@ version: 0.17.1-dev.{build}
 environment:
   matrix:
     - generator: "Visual Studio 12"
-      ARCH: Win32
+      Arch: Win32
     - generator: "Visual Studio 12 Win64"
-      ARCH: Win64
+      Arch: Win64
     - generator: "Visual Studio 14"
-      ARCH: Win32
+      Arch: Win32
     - generator: "Visual Studio 14 Win64"
-      ARCH : Win64
+      Arch : Win64
     - generator: "MSYS Makefiles"
-      ARCH : Win32
+      Arch : Win32
     - generator: "MSYS Makefiles"
-      ARCH: i686 # this is for 32-bit MinGW-w64
+      Arch: i686 # this is for 32-bit MinGW-w64
     - generator: "MSYS Makefiles"
-      ARCH : Win64
+      Arch : Win64
 
 configuration:
   #- Debug
@@ -54,7 +54,7 @@ build_script:
   #
   # First set MinGW to use
   #
-  #- cmd: if "%generator%"" == "MSYS Makefiles" (C:\MinGW\msys\1.0\bin\sh --login /c/projects/oce/appveyor-scripts/set-mingw.sh)
+  - cmd: if "%generator%" == "MSYS Makefiles" (C:\MinGW\msys\1.0\bin\sh --login /c/projects/oce/appveyor-scripts/set-mingw.sh)
   #
   # Build dependencies: freetype, freeimage etc. from the oce bundle ...
   #
