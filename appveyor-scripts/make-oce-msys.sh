@@ -46,10 +46,10 @@ cmake -DOCE_VISUALISATION:BOOL=ON \
       -DOCE_TESTING:BOOL=OFF \
       -DFREETYPE_INCLUDE_DIR_freetype2=C:\\oce-win-bundle\\include\\freetype \
       -DFREETYPE_INCLUDE_DIR_ft2build=C:\\oce-win-bundle/include\\freetype \
-      -DFREETYPE_LIBRARY=c:\\oce-win-bundle\\%Arch%/lib/freetype.lib \
+      -DFREETYPE_LIBRARY=c:\\oce-win-bundle\\$Arc/lib/freetype.lib \
       -DFREEIMAGE_INCLUDE_DIR=C:\\oce-win-bundle\include\\FreeImage \
-      -DFREEIMAGE_LIBRARY=C:\\oce-win-bundle\\%Arch%\\lib\\FreeImage.lib \
-      -DFREEIMAGEPLUS_LIBRARY=C:\\oce-win-bundle\\%Arch%\\lib\\FreeImagePlus.lib \
+      -DFREEIMAGE_LIBRARY=C:\\oce-win-bundle\\$Arch\\lib\\FreeImage.lib \
+      -DFREEIMAGEPLUS_LIBRARY=C:\\oce-win-bundle\\$Arch\\lib\\FreeImagePlus.lib \
       -DOCE_INSTALL_PREFIX=C:\\oce-0.17.1-dev \
       -G'MSYS Makefiles' ..
 mingw32-make -j4
