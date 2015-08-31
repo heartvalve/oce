@@ -18,3 +18,4 @@ else
   7z x $f > /dev/null
   mv mingw64 /MinGW
 fi
+g++ -v
