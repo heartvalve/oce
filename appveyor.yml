@@ -27,6 +27,12 @@ branches:
     - review/*
     - tp/*  # to remove when branch is merged
 
+shallow_clone: true 
+
+cache:
+- i686-4.9.2-release-win32-sjlj-rt_v3-rev1.7z
+- x86_64-4.9.2-release-win32-seh-rt_v3-rev1.7z
+
 # scripts that are called at very beginning, before repo cloning
 init:
   #- set PATH=%PATH%;C:\MinGW\bin
@@ -54,12 +60,12 @@ build_script:
   #
   # First set MinGW to use
   #
-  - cmd: if "%generator%" == "MSYS Makefiles" (C:\MinGW\msys\1.0\bin\sh --login /c/projects/oce/appveyor-scripts/set-mingw.sh)
+  #- cmd: if "%generator%" == "MSYS Makefiles" (C:\MinGW\msys\1.0\bin\sh --login /c/projects/oce/appveyor-scripts/set-mingw.sh)
   #
   # Build dependencies: freetype, freeimage etc. from the oce bundle ...
   #
-  - cmd: if "%generator%" == "MSYS Makefiles" (C:\MinGW\msys\1.0\bin\sh --login /c/projects/oce/appveyor-scripts/make-oce-bundle-msys.sh)
-      else (CALL C:\projects\oce\appveyor-scripts\make-oce-bundle-msvc.bat)
+  #- cmd: if "%generator%" == "MSYS Makefiles" (C:\MinGW\msys\1.0\bin\sh --login /c/projects/oce/appveyor-scripts/make-oce-bundle-msys.sh)
+  #    else (CALL C:\projects\oce\appveyor-scripts\make-oce-bundle-msvc.bat)
   #
   # ... then build oce
   #
