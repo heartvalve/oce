@@ -45,6 +45,7 @@ cmake -DOCE_VISUALISATION:BOOL=OFF \
       -DOCE_WITH_GL2PS:BOOL=OFF \
       -DOCE_WITH_FREEIMAGE:BOOL=OFF \
       -DOCE_TESTING:BOOL=OFF \
+      -DOCE_COPY_HEADERS_BUILD:BOOL=ON \
       -DFREETYPE_INCLUDE_DIR_freetype2=C:\\oce-win-bundle\\include\\freetype \
       -DFREETYPE_INCLUDE_DIR_ft2build=C:\\oce-win-bundle\\include\\freetype \
       -DFREETYPE_LIBRARY=c:\\oce-win-bundle\\$Arch\\lib\\freetype.lib \

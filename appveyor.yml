@@ -2,10 +2,10 @@ version: 0.17.1-dev.{build}
 
 environment:
   matrix:
-    - generator: "MSYS Makefiles"
+    - generator: "MSYS Makefiles"  # MinGW-w64 gcc-5.1.0 64 bit
       Arch : Win64
-    - generator: "MSYS Makefiles"
-      Arch: i686 # this is for 32-bit MinGW-w64
+    - generator: "MSYS Makefiles"  # MinGW-w64 gcc-5.1.0 32 bit
+      Arch: i686
     - generator: "Visual Studio 12"
       Arch: Win32
     - generator: "Visual Studio 12 Win64"
@@ -14,7 +14,7 @@ environment:
       Arch: Win32
     - generator: "Visual Studio 14 Win64"
       Arch : Win64
-    - generator: "MSYS Makefiles"
+    - generator: "MSYS Makefiles"  # MinGW-w64 gcc-4.8.1 32 bit that comes with appveyor
       Arch : Win32
 
 configuration:
@@ -35,40 +35,14 @@ cache:
 
 # scripts that are called at very beginning, before repo cloning
 init:
-  #- set PATH=%PATH%;C:\MinGW\bin
-  #- g++ -v
-  #- ps: |
-  #    if ($env:generator -eq "MinGW Makefiles") {
-  #      # Remove path to Git bin directory from PATH because it breaks MinGW config.
-  #      $env:PATH = $env:PATH -replace "C:\\Program Files \(x86\)\\Git\\bin",""
-  ##      mingw32-make --version
-  #    } else {
-  #      msbuild /version
-  #    }
-  #- cmd: cmake --version
 
 before_build:
- # CMake refuses to generate MinGW Makefiles if sh.exe is in the Path
-  #- if "%generator%"=="MinGW Makefiles" (rename "C:\Program Files (x86)\Git\bin\sh.exe" "sh2.exe")
-  #- C:\MinGW\msys\1.0\bin\sh --login -c "echo 'C:\MinGW\ /MinGW' > /etc/fstab;"
 
 # scripts that run after cloning repository
 install:
   - git clone -q --branch=master https://github.com/QbProg/oce-win-bundle.git C:\projects\oce-win-bundle
 
 build_script:
-  #
-  # First set MinGW to use
-  #
-  #- cmd: if "%generator%" == "MSYS Makefiles" (C:\MinGW\msys\1.0\bin\sh --login /c/projects/oce/appveyor-scripts/set-mingw.sh)
-  #
-  # Build dependencies: freetype, freeimage etc. from the oce bundle ...
-  #
-  #- cmd: if "%generator%" == "MSYS Makefiles" (C:\MinGW\msys\1.0\bin\sh --login /c/projects/oce/appveyor-scripts/make-oce-bundle-msys.sh)
-  #    else (CALL C:\projects\oce\appveyor-scripts\make-oce-bundle-msvc.bat)
-  #
-  # ... then build oce
-  #
   - cmd: if "%generator%" == "MSYS Makefiles" (C:\MinGW\msys\1.0\bin\sh --login /c/projects/oce/appveyor-scripts/make-oce-msys.sh)
       else (CALL C:\projects\oce\appveyor-scripts\make-oce-msvc.bat)
 
