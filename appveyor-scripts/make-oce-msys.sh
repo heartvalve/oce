@@ -34,7 +34,7 @@ cmake -DBUNDLE_BUILD_FREEIMAGE:BOOL=OFF \
       -G'MSYS Makefiles' ..
 mingw32-make -j4
 mingw32-make install
-dir /s /c/oce-win-bundle
+find /c/oce-win-bundle
 #
 # Then make oce
 #
