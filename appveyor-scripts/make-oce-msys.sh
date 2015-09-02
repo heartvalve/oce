@@ -1,4 +1,3 @@
-http://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/5.1.0/threads-win32/seh/x86_64-5.1.0-release-win32-seh-rt_v4-rev0.7z/download
 #!/bin/sh
 set -e
 cd `dirname "$0"`/..
@@ -50,7 +49,7 @@ cmake -DOCE_VISUALISATION:BOOL=ON \
       -DOCE_COPY_HEADERS_BUILD:BOOL=ON \
       -DFREETYPE_INCLUDE_DIR_freetype2=C:\\oce-win-bundle\\include\\freetype \
       -DFREETYPE_INCLUDE_DIR_ft2build=C:\\oce-win-bundle\\include\\freetype \
-      -DFREETYPE_LIBRARY=c:\\oce-win-bundle\\$Arch\\lib\\freetype.lib \
+      -DFREETYPE_LIBRARY=C:\\projects\\oce-win-bundle\\cmake-build\\freetype.cmake\\libfreetype.dll \
       -DFREEIMAGE_INCLUDE_DIR=C:\\oce-win-bundle\include\\FreeImage \
       -DFREEIMAGE_LIBRARY=C:\\oce-win-bundle\\$Arch\\lib\\FreeImage.lib \
       -DFREEIMAGEPLUS_LIBRARY=C:\\oce-win-bundle\\$Arch\\lib\\FreeImagePlus.lib \
