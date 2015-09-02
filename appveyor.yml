@@ -16,6 +16,8 @@ environment:
       Arch : Win64
     - generator: "MSYS Makefiles"  # MinGW-w64 gcc-4.8.1 32 bit that comes with appveyor
       Arch : Win32
+
+matrix:
   allow_failures:
     - generator: "Visual Studio 14"
       Arch: Win32
