@@ -1,4 +1,6 @@
-version: 0.17.1-dev.{build}
+oce_version: 0.17.1-dev
+
+version: oce-%oce_version%.{build}
 
 environment:
   matrix:
@@ -61,13 +63,25 @@ build_script:
       else (CALL C:\projects\oce\appveyor-scripts\make-oce-msvc.bat)
 
 after_build:
-  - cmd: 7z a oce-0.17.1-dev.%Arch%.%Compiler%.zip C:\oce-0.17.1-dev
+  - cmd: 7z a oce-%oce_version%.%Arch%.%Compiler%.zip C:\oce-0.17.1-dev
 
 artifacts:
-  - path: oce-0.17.1-dev.%Arch%.%Compiler%.zip
+  - path: oce-%oce_version%.%Arch%.%Compiler%.zip
 
 test_script:
   - cmd: SET PATH=C:\projects\oce\cmake-build\%Arch%\bin\Release;%PATH%
   - ps: ctest -V .
 
-deploy: off
+#
+# The following section automatically uploads artifacts
+# whenever a tag is created on the master branch.
+#
+deploy:
+  - provider: GitHub
+    auth_token:
+      secure: +HE8jHwECbKpIVHeydBVMBskoHh//glZWNo9oCLPvOtLiY3MAO75zPISuwPD/ctW
+    artifact: oce-%oce_version%.%Arch%.%Compiler%.zip
+    draft: true
+    on:
+      branch: master
+      appveyor_repo_tag: true
