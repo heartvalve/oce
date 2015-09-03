@@ -54,4 +54,4 @@ cmake -DOCE_VISUALISATION:BOOL=ON \
       -DOCE_INSTALL_PREFIX=C:\\oce-$oce_version \
       -G'MSYS Makefiles' ..
 mingw32-make -j4
-mingw32-make install > /dev/null
+mingw32-make install
