@@ -1,8 +1,7 @@
-oce_version: 0.17.1-dev
-
-version: oce-%oce_version%.{build}
+version: oce-0.17.1-dev.{build}
 
 environment:
+  oce_version: 0.17.1-dev
   matrix:
     - generator: "MSYS Makefiles"  # MinGW-w64 gcc-5.1.0 64 bit
       Arch : Win64
