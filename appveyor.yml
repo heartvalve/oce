@@ -70,7 +70,6 @@ artifacts:
 test_script:
   - cmd: SET PATH=C:\projects\oce\cmake-build\%Arch%\bin\Release;%PATH%
   - ps: ctest -V .
-
 #
 # The following section automatically uploads artifacts
 # whenever a tag is created on the master branch.
