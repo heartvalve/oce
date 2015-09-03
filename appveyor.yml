@@ -4,18 +4,25 @@ environment:
   matrix:
     - generator: "MSYS Makefiles"  # MinGW-w64 gcc-5.1.0 64 bit
       Arch : Win64
+      Compiler: MinGW64-gcc-5.1.0
     - generator: "MSYS Makefiles"  # MinGW-w64 gcc-4.9.3 32 bit
       Arch: i686
+      Compiler: MinGW-gcc-4.9.3
     - generator: "Visual Studio 12"
       Arch: Win32
+      Compiler: MSVC2013
     - generator: "Visual Studio 12 Win64"
       Arch: Win64
+      Compiler: MSVC2013
     - generator: "Visual Studio 14"
       Arch: Win32
+      Compiler: MSVC2015
     - generator: "Visual Studio 14 Win64"
       Arch : Win64
+      Compiler: MSVC2015
     - generator: "MSYS Makefiles"  # MinGW-w64 gcc-4.8.1 32 bit that comes with appveyor
       Arch : Win32
+      Compiler: MinGW-gcc-4.8.1
 
 matrix:
   allow_failures:
@@ -54,10 +61,10 @@ build_script:
       else (CALL C:\projects\oce\appveyor-scripts\make-oce-msvc.bat)
 
 after_build:
-  - cmd: 7z a oce-0.17.1-dev.zip C:\oce-0.17.1-dev
+  - cmd: 7z a oce-0.17.1-dev.%Arch%.%Compiler%.zip C:\oce-0.17.1-dev
 
 artifacts:
-  - path: oce-0.17.1-dev.zip
+  - path: oce-0.17.1-dev.%Arch%.%Compiler%.zip
 
 test_script:
   - cmd: SET PATH=C:\projects\oce\cmake-build\%Arch%\bin\Release;%PATH%
