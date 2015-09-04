@@ -62,7 +62,7 @@ build_script:
       else (CALL C:\projects\oce\appveyor-scripts\make-oce-msvc.bat)
 
 after_build:
-  - cmd: 7z a oce-%oce_version%.%Arch%.%Compiler%.zip C:\oce-0.17.1-dev
+  - cmd: 7z a oce-%oce_version%.%Arch%.%Compiler%.zip C:\oce-0.17.1-dev > nul
 
 artifacts:
   - path: oce-%oce_version%.%Arch%.%Compiler%.zip
