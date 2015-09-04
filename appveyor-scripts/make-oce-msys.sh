@@ -43,7 +43,7 @@ cmake -DOCE_VISUALISATION:BOOL=ON \
       -DOCE_DATAEXCHANGE:BOOL=OFF -DOCE_OCAF:BOOL=OFF \
       -DOCE_WITH_GL2PS:BOOL=OFF \
       -DOCE_WITH_FREEIMAGE:BOOL=OFF \
-      -DOCE_TESTING:BOOL=OFF \
+      -DOCE_TESTING:BOOL=ON \
       -DOCE_COPY_HEADERS_BUILD:BOOL=ON \
       -DFREETYPE_INCLUDE_DIR_freetype2=C:\\oce-win-bundle\\include\\freetype \
       -DFREETYPE_INCLUDE_DIR_ft2build=C:\\oce-win-bundle\\include\\freetype \
@@ -54,4 +54,4 @@ cmake -DOCE_VISUALISATION:BOOL=ON \
       -DOCE_INSTALL_PREFIX=C:\\oce-0.17.1-dev \
       -G'MSYS Makefiles' ..
 mingw32-make -j4
-mingw32-make install
+mingw32-make install > /dev/null
