@@ -68,6 +68,7 @@ artifacts:
   - path: oce-%oce_version%.%Arch%.%Compiler%.zip
 
 test_script:
+  - cmd: dir /s C:\oce-0.17.1-dev
   - cmd: SET PATH=C:\projects\oce\cmake-build\%Arch%\bin\Release;%PATH%
   - cmd: cd C:\projects\oce\cmake-build
   - cmd: ctest -V .
