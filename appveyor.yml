@@ -57,11 +57,11 @@ before_build:
 
 # scripts that run after cloning repository
 install:
-  - cmd: git clone -q --branch=master https://github.com/QbProg/oce-win-bundle.git C:\projects\oce-win-bundle
-  - cmd: cd C:\projects\oce-win-bundle
-  - cmd: git config --global user.email "oce-dev@googlegroups.com"
-  - cmd: git config --global user.name "OCE community"
-  - cmd: git cherry-pick 7b97df0049b88a80fe7c9b9c437cf2e1fac35ce6  # VS2015 fix for freeimage
+  - cmd: git clone -q --branch=qb/new-bundle https://github.com/QbProg/oce-win-bundle.git C:\projects\oce-win-bundle
+#  - cmd: cd C:\projects\oce-win-bundle
+#  - cmd: git config --global user.email "oce-dev@googlegroups.com"
+#  - cmd: git config --global user.name "OCE community"
+#  - cmd: git cherry-pick 7b97df0049b88a80fe7c9b9c437cf2e1fac35ce6  # VS2015 fix for freeimage
 
 build_script:
   - cmd: if "%generator%" == "MSYS Makefiles" (C:\MinGW\msys\1.0\bin\sh --login /c/projects/oce/appveyor-scripts/make-oce-msys.sh)
