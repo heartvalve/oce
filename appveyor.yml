@@ -3,27 +3,29 @@ version: oce-0.17.1-dev.{build}
 environment:
   oce_version: 0.17.1-dev
   matrix:
-    - generator: "MSYS Makefiles"  # MinGW-w64 gcc-5.1.0 64 bit
-      Arch : Win64
-      Compiler: MinGW64-gcc-5.1.0
-    - generator: "MSYS Makefiles"  # MinGW-w64 gcc-4.9.3 32 bit
-      Arch: i686
-      Compiler: MinGW-gcc-4.9.3
+    - generator: "Visual Studio 14"
+      Arch: Win32
+      Compiler: MSVC2015
     - generator: "Visual Studio 12"
       Arch: Win32
       Compiler: MSVC2013
     - generator: "Visual Studio 12 Win64"
       Arch: Win64
       Compiler: MSVC2013
-    - generator: "Visual Studio 14"
-      Arch: Win32
-      Compiler: MSVC2015
     - generator: "Visual Studio 14 Win64"
       Arch : Win64
       Compiler: MSVC2015
+    - generator: "MSYS Makefiles"  # MinGW-w64 gcc-5.1.0 64 bit
+      Arch : Win64
+      Compiler: MinGW64-gcc-5.1.0
+    - generator: "MSYS Makefiles"  # MinGW-w64 gcc-4.9.3 32 bit
+      Arch: i686
+      Compiler: MinGW-gcc-4.9.3
     - generator: "MSYS Makefiles"  # MinGW-w64 gcc-4.8.1 32 bit that comes with appveyor
       Arch : Win32
       Compiler: MinGW-gcc-4.8.1
+
+
 
 matrix:
   allow_failures:
@@ -55,10 +57,10 @@ before_build:
 
 # scripts that run after cloning repository
 install:
-  - git clone -q --branch=master https://github.com/QbProg/oce-win-bundle.git C:\projects\oce-win-bundle
+  - cmd: git clone -q --branch=master https://github.com/QbProg/oce-win-bundle.git C:\projects\oce-win-bundle
   - cmd: cd C:\projects\oce-win-bundle
-  - cmd: git config --global user.email "tpaviot@gmail.com"
-  - cmd: git config --global user.name "Thomas Paviot"
+  - cmd: git config --global user.email "oce-dev@googlegroups.com"
+  - cmd: git config --global user.name "OCE community"
   - cmd: git cherry-pick 7b97df0049b88a80fe7c9b9c437cf2e1fac35ce6  # VS2015 fix for freeimage
 
 build_script:
