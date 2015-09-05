@@ -50,7 +50,6 @@ cache:
 
 # scripts that are called at very beginning, before repo cloning
 init:
-  - cmd: SET PATH=C:\MinGW\bin;%PATH%  # necessary to find gcc dlls (for tests to run)
 
 before_build:
 
@@ -58,6 +57,8 @@ before_build:
 install:
   - git clone -q --branch=master https://github.com/QbProg/oce-win-bundle.git C:\projects\oce-win-bundle
   - cmd: cd C:\projects\oce-win-bundle
+  - cmd: git config --global user.email "tpaviot@gmail.com"
+  - cmd: git config --global user.name "Thomas Paviot"
   - cmd: git cherry-pick 7b97df0049b88a80fe7c9b9c437cf2e1fac35ce6  # VS2015 fix for freeimage
 
 build_script:
@@ -71,10 +72,7 @@ artifacts:
   - path: oce-%oce_version%.%Arch%.%Compiler%.zip
 
 test_script:
-  - cmd: dir /s C:\oce-0.17.1-dev
-  - cmd: SET PATH=C:\projects\oce\cmake-build\%Arch%\bin\Release;SET PATH=C:\projects\oce\cmake-build\%Arch%\lib;%PATH%
-  - cmd: cd C:\projects\oce\cmake-build
-  - cmd: ctest -V .
+
 #
 # The following section automatically uploads artifacts
 # whenever a tag is created on the master branch.
