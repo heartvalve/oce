@@ -20,7 +20,7 @@ cmake -DOCE_VISUALISATION:BOOL=ON -DOCE_DATAEXCHANGE:BOOL=ON -DOCE_OCAF:BOOL=ON 
       -DOCE_WITH_GL2PS:BOOL=OFF ^
       -DOCE_WITH_FREEIMAGE:BOOL=ON ^
       -DOCE_TESTING:BOOL=OFF ^
-      -DOCE_MULTITHREAD_LIBRARY="NONE" ^
+      -DOCE_MULTITHREAD_LIBRARY=NONE ^
       -DFREETYPE_INCLUDE_DIR_freetype2=C:\oce-win-bundle\include\freetype ^
       -DFREETYPE_INCLUDE_DIR_ft2build=C:\oce-win-bundle\include\freetype ^
       -DFREETYPE_LIBRARY=C:\oce-win-bundle\%ARCH%\lib\freetype.lib ^
