@@ -31,7 +31,7 @@ cmake -DBUNDLE_BUILD_FREEIMAGE:BOOL=OFF \
       -DBUNDLE_SHARED_LIBRARIES:BOOL=ON \
       -DOCE_WIN_BUNDLE_INSTALL_DIR=c:\\oce-win-bundle \
       -G'MSYS Makefiles' ..
-mingw32-make /fast -j4
+mingw32-make \fast -j4
 mingw32-make install
 #
 # Then make oce
@@ -53,5 +53,10 @@ cmake -DOCE_VISUALISATION:BOOL=ON \
       -DFREEIMAGEPLUS_LIBRARY=C:\\oce-win-bundle\\$Arch\\lib\\FreeImagePlus.lib \
       -DOCE_INSTALL_PREFIX=C:\\oce-0.17.1-dev \
       -G'MSYS Makefiles' ..
-mingw32-make /fast -j4
+mingw32-make \fast -j4
 mingw32-make install > /dev/null
+#
+# Finally run tests
+#
+export PATH=$PATH:/c/MinGW/bin:
+mingw32-make test
