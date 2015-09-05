@@ -45,11 +45,12 @@ branches:
 shallow_clone: true 
 
 cache:
-- i686-4.9.3-release-win32-sjlj-rt_v4-rev0.7z
-- x86_64-5.1.0-release-win32-seh-rt_v4-rev0.7z
+  - i686-4.9.3-release-win32-sjlj-rt_v4-rev0.7z
+  - x86_64-5.1.0-release-win32-seh-rt_v4-rev0.7z
 
 # scripts that are called at very beginning, before repo cloning
 init:
+  - cmd: SET PATH=C:\MinGW\bin;%PATH%  # necessary to find gcc dlls (for tests to run)
 
 before_build:
 
@@ -69,7 +70,7 @@ artifacts:
 
 test_script:
   - cmd: dir /s C:\oce-0.17.1-dev
-  - cmd: SET PATH=C:\projects\oce\cmake-build\%Arch%\bin\Release;%PATH%
+  - cmd: SET PATH=C:\projects\oce\cmake-build\%Arch%\bin\Release;SET PATH=C:\projects\oce\cmake-build\%Arch%\lib;%PATH%
   - cmd: cd C:\projects\oce\cmake-build
   - cmd: ctest -V .
 #
