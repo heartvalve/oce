@@ -61,9 +61,12 @@ build_script:
 
 after_build:
   - cmd: 7z a oce-%oce_version%.%Arch%.%Compiler%.zip C:\oce-%oce_version% > nul
+  - cmd: dir oce-%oce_version%.%Arch%.%Compiler%.zip
 
 artifacts:
   - path: oce-%oce_version%.%Arch%.%Compiler%.zip
+
+test: off  # to avoid discovering tests
 
 #
 # The following section automatically uploads artifacts
