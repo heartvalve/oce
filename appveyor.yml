@@ -3,15 +3,15 @@ version: oce-0.17.1-dev.{build}
 environment:
   oce_version: 0.17.1-dev
   matrix:
-    - generator: "Visual Studio 14"
-      Arch: Win32
-      Compiler: MSVC2015
     - generator: "Visual Studio 12"
       Arch: Win32
       Compiler: MSVC2013
     - generator: "Visual Studio 12 Win64"
       Arch: Win64
       Compiler: MSVC2013
+    - generator: "Visual Studio 14"
+      Arch: Win32
+      Compiler: MSVC2015
     - generator: "Visual Studio 14 Win64"
       Arch : Win64
       Compiler: MSVC2015
@@ -25,14 +25,11 @@ environment:
       Arch : Win32
       Compiler: MinGW-gcc-4.8.1
 
-
-
 matrix:
   allow_failures:
-    - generator: "Visual Studio 14"
-      Arch: Win32
-    - generator: "Visual Studio 14 Win64"
-      Arch : Win64
+    - generator: "MSYS Makefiles"
+      Arch : Win32
+      Compiler: MinGW-gcc-4.8.1
 
 configuration:
   #- Debug
@@ -42,7 +39,6 @@ branches:
   only:
     - master
     - review/*
-    - tp/*  # to remove when branch is merged
 
 shallow_clone: true 
 
@@ -64,12 +60,10 @@ build_script:
       else (CALL C:\projects\oce\appveyor-scripts\make-oce-msvc.bat)
 
 after_build:
-  - cmd: 7z a oce-%oce_version%.%Arch%.%Compiler%.zip C:\oce-0.17.1-dev > nul
+  - cmd: 7z a oce-%oce_version%.%Arch%.%Compiler%.zip C:\oce-%oce_version% > nul
 
 artifacts:
   - path: oce-%oce_version%.%Arch%.%Compiler%.zip
-
-test_script:
 
 #
 # The following section automatically uploads artifacts

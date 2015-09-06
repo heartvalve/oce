@@ -1,5 +1,3 @@
-rem Make OCE win bundle
-
 cd C:\projects\oce-win-bundle
 mkdir cmake-build
 cd cmake-build
