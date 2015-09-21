@@ -85,5 +85,6 @@ after_script:
 branches:
   only:
     - master
+    - osx-test
     - /^review/
 
